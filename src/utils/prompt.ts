@@ -140,6 +140,9 @@ export const generatePrompt = (
 	[
 		'Generate a concise git commit message title in present tense that precisely describes the key changes in the following code diff. Focus on what was changed, not just file names. Provide only the title, no description or body.',
 		`Message language: ${locale}`,
+		locale.toLowerCase().startsWith('zh')
+			? 'For Chinese output, use concise Simplified Chinese. Keep conventional commit types such as feat/fix/docs in English. Do not translate the commit type.'
+			: undefined,
 		`Commit message must be a maximum of ${maxLength} characters.`,
 		'Exclude anything unnecessary such as translation. Your entire response will be passed directly into git commit.',
 		`IMPORTANT: Do not include any explanations, introductions, or additional text. Do not wrap the commit message in quotes or any other formatting. The commit message must not exceed ${maxLength} characters. Respond with ONLY the commit message text.`,
