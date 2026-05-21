@@ -1,7 +1,7 @@
 {
-	"name": "aicommits",
+	"name": "aicommits-cn",
 	"version": "0.0.0-semantic-release",
-	"description": "Writes your git commit messages for you with AI",
+	"description": "Chinese-first AI git commit message CLI",
 	"keywords": [
 		"ai",
 		"git",
@@ -11,7 +11,7 @@
 	"license": "MIT",
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/Nutlope/aicommits.git"
+		"url": "git+https://github.com/MAXMAN2323/aicommits-cn.git"
 	},
 	"author": "Hassan El Mghari (@nutlope)",
 	"type": "module",
@@ -19,6 +19,8 @@
 		"dist"
 	],
 	"bin": {
+		"aicommits-cn": "dist/cli.mjs",
+		"aicn": "dist/cli.mjs",
 		"aicommits": "dist/cli.mjs",
 		"aic": "dist/cli.mjs"
 	},
