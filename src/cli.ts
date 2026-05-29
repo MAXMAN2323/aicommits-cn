@@ -32,7 +32,7 @@ const rawArgv = process.argv.slice(2);
 
 cli(
 	{
-		name: 'aicommits',
+		name: 'aicommits-cn',
 
 		/**
 		 * Since this is a wrapper around `git commit`,
