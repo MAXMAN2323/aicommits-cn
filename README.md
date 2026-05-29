@@ -2,11 +2,11 @@
   <div>
     <img src=".github/screenshot.png" alt="AI Commits"/>
     <img src="./aic.png" width="50" alt="AI Commits"/>
-    <h1 align="center">AI Commits</h1>
+    <h1 align="center">aicommits-cn</h1>
   </div>
-  <p>A CLI that writes your git commit messages for you with AI. Never write a commit message again.</p>
-  <a href="https://www.npmjs.com/package/aicommits"><img src="https://img.shields.io/npm/v/aicommits" alt="Current version"></a>
-  <a href="https://www.npmjs.com/package/aicommits"><img src="https://img.shields.io/npm/dt/aicommits" alt="Downloads"></a>
+  <p>中文优先的 AI Git commit message CLI，基于 aicommits 改造，默认生成中文提交信息。</p>
+  <a href="https://www.npmjs.com/package/aicommits-cn"><img src="https://img.shields.io/npm/v/aicommits-cn" alt="Current version"></a>
+  <a href="https://www.npmjs.com/package/aicommits-cn"><img src="https://img.shields.io/npm/dt/aicommits-cn" alt="Downloads"></a>
 </div>
 
 ---
@@ -15,16 +15,16 @@
 
 > The minimum supported version of Node.js is v22. Check your Node.js version with `node --version`.
 
-1. Install _aicommits_:
+1. Install _aicommits-cn_:
 
    ```sh
-   npm install -g aicommits
+   npm install -g aicommits-cn
    ```
 
 2. Run the setup command to choose your AI provider:
 
    ```sh
-   aicommits setup
+   aicn setup
    ```
 
 This will guide you through:
@@ -48,9 +48,9 @@ This will guide you through:
   **For CI/CD environments**, you can also set up configuration via the config file:
 
   ```bash
-  aicommits config set OPENAI_API_KEY="your_api_key_here"
-  aicommits config set OPENAI_BASE_URL="your_api_endpoint"  # Optional, for custom endpoints
-  aicommits config set OPENAI_MODEL="your_model_choice"     # Optional, defaults to provider default
+  aicn config set OPENAI_API_KEY="your_api_key_here"
+  aicn config set OPENAI_BASE_URL="your_api_endpoint"  # Optional, for custom endpoints
+  aicn config set OPENAI_MODEL="your_model_choice"     # Optional, defaults to provider default
   ```
 
   > **Note:** When using environment variables, ensure all related variables (e.g., `OPENAI_API_KEY` and `OPENAI_BASE_URL`) are set consistently to avoid configuration mismatches with the config file.
@@ -62,13 +62,13 @@ This will guide you through:
 Check the installed version with:
 
 ```sh
-aicommits --version
+aicn --version
 ```
 
 To update to the latest version, run:
 
 ```sh
-aicommits update
+aicn update
 ```
 
 This will automatically detect your package manager (npm, pnpm, yarn, or bun) and update using the correct command.
@@ -76,29 +76,29 @@ This will automatically detect your package manager (npm, pnpm, yarn, or bun) an
 Alternatively, you can manually update:
 
 ```sh
-npm install -g aicommits
+npm install -g aicommits-cn
 ```
 
 ## Usage
 
 ### CLI mode
 
-You can call `aicommits` directly to generate a commit message for your staged changes:
+You can call `aicn` directly to generate a Chinese commit message for your staged changes:
 
 ```sh
 git add <files...>
-aicommits
+aicn
 ```
 
-`aicommits` passes down unknown flags to `git commit`, so you can pass in [`commit` flags](https://git-scm.com/docs/git-commit).
+`aicn` passes down unknown flags to `git commit`, so you can pass in [`commit` flags](https://git-scm.com/docs/git-commit).
 
 For example, you can stage all changes in tracked files with as you commit:
 
 ```sh
-aicommits --all # or -a
+aicn --all # or -a
 ```
 
-> 👉 **Tip:** Use the `aic` alias if `aicommits` is too long for you.
+> 👉 **Tip:** Use `aicn` as the short command, or `aicommits-cn` if you prefer the full name.
 
 #### CLI Options
 
@@ -116,7 +116,7 @@ aicommits --all # or -a
 Sometimes the recommended commit message isn't the best so you want it to generate a few to pick from. You can generate multiple commit messages at once by passing in the `--generate <i>` flag, where 'i' is the number of generated messages:
 
 ```sh
-aicommits --generate <i> # or -g <i>
+aicn --generate <i> # or -g <i>
 ```
 
 > Warning: this uses more tokens, meaning it costs more.
@@ -134,11 +134,11 @@ You can choose from five different commit message formats:
 Use the `--type` flag to specify the format:
 
 ```sh
-aicommits --type conventional      # or -t conventional
-aicommits --type conventional+body # or -t conventional+body (conventional subject + body)
-aicommits --type gitmoji           # or -t gitmoji
-aicommits --type plain             # or -t plain (default)
-aicommits --type subject+body      # or -t subject+body (subject + body)
+aicn --type conventional      # or -t conventional
+aicn --type conventional+body # or -t conventional+body (conventional subject + body)
+aicn --type gitmoji           # or -t gitmoji
+aicn --type plain             # or -t plain (default)
+aicn --type subject+body      # or -t subject+body (subject + body)
 ```
 
 This feature is useful if your project follows a specific commit message standard or if you're using tools that rely on these commit formats.
@@ -149,28 +149,28 @@ You can customize the LLM's behavior with the `--prompt` flag to guide commit me
 
 ```sh
 # Write commit messages in a specific language
-aicommits -p "Write commit messages in Italian"
+aicn -p "Write commit messages in Italian"
 
 # Focus on specific aspects of the changes
-aicommits -p "Focus on performance implications of changes"
+aicn -p "Focus on performance implications of changes"
 
 # Use a specific style or tone
-aicommits -p "Use technical jargon suitable for senior developers"
+aicn -p "Use technical jargon suitable for senior developers"
 
 # Include specific details in the message
-aicommits -p "Always mention the specific function names and file paths changed"
+aicn -p "Always mention the specific function names and file paths changed"
 ```
 
 ### Git hook
 
-You can also integrate _aicommits_ with Git via the [`prepare-commit-msg`](https://git-scm.com/docs/githooks#_prepare_commit_msg) hook. This lets you use Git like you normally would, and edit the commit message before committing.
+You can also integrate _aicommits-cn_ with Git via the [`prepare-commit-msg`](https://git-scm.com/docs/githooks#_prepare_commit_msg) hook. This lets you use Git like you normally would, and edit the commit message before committing.
 
 #### Install
 
 In the Git repository you want to install the hook in:
 
 ```sh
-aicommits hook install
+aicn hook install
 ```
 
 #### Uninstall
@@ -178,7 +178,7 @@ aicommits hook install
 In the Git repository you want to uninstall the hook from:
 
 ```sh
-aicommits hook uninstall
+aicn hook uninstall
 ```
 
 #### Usage
@@ -198,7 +198,7 @@ aicommits hook uninstall
 
 ### Environment Variables
 
-You can also configure aicommits using environment variables instead of the config file.
+You can also configure aicommits-cn using environment variables instead of the config file.
 
 **Example:**
 
@@ -206,7 +206,7 @@ You can also configure aicommits using environment variables instead of the conf
 export OPENAI_API_KEY="sk-..."
 export OPENAI_BASE_URL="https://api.example.com"
 export OPENAI_MODEL="gpt-4"
-aicommits  # Uses environment variables
+aicn  # Uses environment variables
 ```
 
 Configuration settings are resolved in the following order of precedence:
@@ -223,7 +223,7 @@ Configuration settings are resolved in the following order of precedence:
 To view all current configuration options that differ from defaults, run:
 
 ```sh
-aicommits config
+aicn config
 ```
 
 This will display only non-default configuration values with API keys masked for security. If no custom configuration is set, it will show "(using all default values)".
@@ -233,7 +233,7 @@ This will display only non-default configuration values with API keys masked for
 To interactively select or change your AI model, run:
 
 ```sh
-aicommits model
+aicn model
 ```
 
 This will:
@@ -243,12 +243,12 @@ This will:
 - Let you select from available models or enter a custom model name
 - Update your configuration automatically
 
-### Updating aicommits
+### Updating aicommits-cn
 
 To update to the latest version, run:
 
 ```sh
-aicommits update
+aicn update
 ```
 
 This will:
@@ -263,19 +263,19 @@ This will:
 To retrieve a configuration option, use the command:
 
 ```sh
-aicommits config get <key>
+aicn config get <key>
 ```
 
 For example, to retrieve the API key, you can use:
 
 ```sh
-aicommits config get OPENAI_API_KEY
+aicn config get OPENAI_API_KEY
 ```
 
 You can also retrieve multiple configuration options at once by separating them with spaces:
 
 ```sh
-aicommits config get OPENAI_API_KEY generate
+aicn config get OPENAI_API_KEY generate
 ```
 
 ### Setting a configuration value
@@ -283,19 +283,19 @@ aicommits config get OPENAI_API_KEY generate
 To set a configuration option, use the command:
 
 ```sh
-aicommits config set <key>=<value>
+aicn config set <key>=<value>
 ```
 
 For example, to set the API key, you can use:
 
 ```sh
-aicommits config set OPENAI_API_KEY=<your-api-key>
+aicn config set OPENAI_API_KEY=<your-api-key>
 ```
 
 You can also set multiple configuration options at once by separating them with spaces, like
 
 ```sh
-aicommits config set OPENAI_API_KEY=<your-api-key> generate=3 locale=en
+aicn config set OPENAI_API_KEY=<your-api-key> generate=3 locale=zh-CN
 ```
 
 ### Config Options
@@ -314,11 +314,11 @@ Model to use for OpenAI-compatible providers.
 
 #### provider
 
-The selected AI provider. Set automatically during `aicommits setup`. Valid values: `openai`, `togetherai`, `groq`, `xai`, `openrouter`, `ollama`, `lmstudio`, `custom`.
+The selected AI provider. Set automatically during `aicn setup`. Valid values: `openai`, `togetherai`, `groq`, `xai`, `openrouter`, `ollama`, `lmstudio`, `custom`.
 
 #### locale
 
-Default: `en`
+Default: `zh-CN`
 
 The locale to use for the generated commit messages. Consult the list of codes in: https://wikipedia.org/wiki/List_of_ISO_639-1_codes.
 
@@ -337,7 +337,7 @@ The timeout for network requests to the OpenAI API in milliseconds.
 Default: `10000` (10 seconds)
 
 ```sh
-aicommits config set timeout=20000 # 20s
+aicn config set timeout=20000 # 20s
 ```
 
 #### max-length
@@ -347,7 +347,7 @@ The maximum character length of the generated commit message.
 Default: `72`
 
 ```sh
-aicommits config set max-length=100
+aicn config set max-length=100
 ```
 
 #### type
@@ -365,11 +365,11 @@ The type of commit message to generate. Available options:
 Examples:
 
 ```sh
-aicommits config set type=conventional
-aicommits config set type=conventional+body
-aicommits config set type=gitmoji
-aicommits config set type=plain
-aicommits config set type=subject+body
+aicn config set type=conventional
+aicn config set type=conventional+body
+aicn config set type=gitmoji
+aicn config set type=plain
+aicn config set type=subject+body
 ```
 
 ## How it works
@@ -388,4 +388,4 @@ Video coming soon where I rebuild it from scratch to show you how to easily buil
 
 ## Contributing
 
-If you want to help fix a bug or implement a feature in [Issues](https://github.com/Nutlope/aicommits/issues), checkout the [Contribution Guide](CONTRIBUTING.md) to learn how to setup and test the project
+If you want to help fix a bug or implement a feature in [Issues](https://github.com/MAXMAN2323/aicommits-cn/issues), checkout the [Contribution Guide](CONTRIBUTING.md) to learn how to setup and test the project
