@@ -16,7 +16,7 @@ export const handleCliError = (error: unknown) => {
 			`\n${indent}Please open a Bug report with the information above:`
 		);
 		console.error(
-			`${indent}https://github.com/Nutlope/aicommits/issues/new/choose`
+			`${indent}https://github.com/MAXMAN2323/aicommits-cn/issues/new/choose`
 		);
 	}
 };

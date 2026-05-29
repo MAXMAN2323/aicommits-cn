@@ -22,7 +22,7 @@ export default command(
 		(async () => {
 			if (!isInteractive()) {
 				throw new KnownError(
-					'Interactive terminal required for setup. Run `aicommits setup` in a terminal.'
+					'Interactive terminal required for setup. Run `aicn setup` in a terminal.'
 				);
 			}
 

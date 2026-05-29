@@ -21,7 +21,7 @@ export default testSuite(({ describe }) => {
 			try {
 				await checkAndAutoUpdate({
 					pkg: {
-						name: 'aicommits',
+						name: 'aicommits-cn',
 						version: '1.0.0',
 					},
 					headless: true,

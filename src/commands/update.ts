@@ -36,7 +36,7 @@ function detectPackageManager(distTag: string): PackageManagerInfo {
 
 		// Check if running from global npm installation
 		if (execPath.includes(globalPath) || execPath.includes('/usr/local') || execPath.includes('/usr/bin')) {
-			return { name: 'npm', updateCommand: `npm install -g aicommits@${distTag}` };
+			return { name: 'npm', updateCommand: `npm install -g aicommits-cn@${distTag}` };
 		}
 	} catch {
 		// Fall through to other detection methods
@@ -46,9 +46,9 @@ function detectPackageManager(distTag: string): PackageManagerInfo {
 	try {
 		execSync('pnpm --version', { stdio: 'ignore' });
 		// Check if installed via pnpm global
-		const pnpmList = execSync('pnpm list -g aicommits', { encoding: 'utf8' });
-		if (pnpmList.includes('aicommits')) {
-			return { name: 'pnpm', updateCommand: `pnpm add -g aicommits@${distTag}` };
+		const pnpmList = execSync('pnpm list -g aicommits-cn', { encoding: 'utf8' });
+		if (pnpmList.includes('aicommits-cn')) {
+			return { name: 'pnpm', updateCommand: `pnpm add -g aicommits-cn@${distTag}` };
 		}
 	} catch {
 		// Not pnpm
@@ -59,8 +59,8 @@ function detectPackageManager(distTag: string): PackageManagerInfo {
 		execSync('yarn --version', { stdio: 'ignore' });
 		// Check if installed via yarn global
 		const yarnList = execSync('yarn global list', { encoding: 'utf8' });
-		if (yarnList.includes('aicommits')) {
-			return { name: 'yarn', updateCommand: `yarn global add aicommits@${distTag}` };
+		if (yarnList.includes('aicommits-cn')) {
+			return { name: 'yarn', updateCommand: `yarn global add aicommits-cn@${distTag}` };
 		}
 	} catch {
 		// Not yarn
@@ -71,20 +71,20 @@ function detectPackageManager(distTag: string): PackageManagerInfo {
 		execSync('bun --version', { stdio: 'ignore' });
 		// Check if installed via bun
 		const bunList = execSync('bun pm bin -g', { encoding: 'utf8' });
-		if (process.execPath.includes('bun') || bunList.includes('aicommits')) {
-			return { name: 'bun', updateCommand: `bun add -g aicommits@${distTag}` };
+		if (process.execPath.includes('bun') || bunList.includes('aicommits-cn')) {
+			return { name: 'bun', updateCommand: `bun add -g aicommits-cn@${distTag}` };
 		}
 	} catch {
 		// Not bun
 	}
 
 	// Default to npm
-	return { name: 'npm', updateCommand: `npm install -g aicommits@${distTag}` };
+	return { name: 'npm', updateCommand: `npm install -g aicommits-cn@${distTag}` };
 }
 
 async function getLatestVersion(distTag: string): Promise<string | null> {
 	try {
-		const response = await fetch(`https://registry.npmjs.org/aicommits/${distTag}`, {
+		const response = await fetch(`https://registry.npmjs.org/aicommits-cn/${distTag}`, {
 			headers: { Accept: 'application/json' },
 		});
 		if (!response.ok) return null;
@@ -98,7 +98,7 @@ async function getLatestVersion(distTag: string): Promise<string | null> {
 export default command(
 	{
 		name: 'update',
-		description: 'Update aicommits to the latest version',
+		description: 'Update aicommits-cn to the latest version',
 		help: {
 			description: 'Check for updates and install the latest version using your package manager',
 		},
@@ -139,7 +139,7 @@ export default command(
 				await execAsync(pm.updateCommand, { timeout: 120000 });
 
 				updateS.stop(`${green('✔')} Successfully updated to v${latestVersion}`);
-				outro(`${green('✔')} Update complete! Run 'aic --version' to verify.`);
+				outro(`${green('✔')} Update complete! Run 'aicn --version' to verify.`);
 			} catch (error: any) {
 				updateS.stop(`${red('✘')} Update failed`, 1);
 

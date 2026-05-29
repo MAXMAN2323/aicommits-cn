@@ -12,7 +12,7 @@ export const OpenRouterProvider: ProviderDef = {
 	defaultModels: ['openai/gpt-oss-20b:free', 'z-ai/glm-4.5-air:free'],
 	requiresApiKey: true,
 	headers: {
-		'HTTP-Referer': 'https://github.com/nutlope/aicommits',
-		'X-Title': 'aicommits',
+		'HTTP-Referer': 'https://github.com/MAXMAN2323/aicommits-cn',
+		'X-Title': 'aicommits-cn',
 	},
 };

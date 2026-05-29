@@ -87,7 +87,7 @@ export default command(
 				);
 			}
 
-			intro(bgCyan(black(' aicommits pr ')));
+			intro(bgCyan(black(' aicn pr ')));
 
 			await assertGitRepo();
 
@@ -164,7 +164,7 @@ export default command(
 			let baseUrl = configProvider.getBaseUrl();
 			if (!baseUrl || baseUrl === '') {
 				throw new KnownError(
-					'Base URL not configured. Please run `aicommits setup` to configure your provider.'
+					'Base URL not configured. Please run `aicn setup` to configure your provider.'
 				);
 			}
 			if (!baseUrl.endsWith('/v1')) {
@@ -173,7 +173,7 @@ export default command(
 			const apiKey = configProvider.getApiKey();
 			if (!apiKey) {
 				throw new KnownError(
-					'API key not configured. Please run `aicommits setup` to configure your provider.'
+					'API key not configured. Please run `aicn setup` to configure your provider.'
 				);
 			}
 			const aiProvider =

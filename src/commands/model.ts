@@ -26,14 +26,14 @@ export default command(
 			const config = await getConfig();
 
 			if (!config.provider) {
-				outro('No provider configured. Run `aicommits setup` first.');
+				outro('No provider configured. Run `aicn setup` first.');
 				return;
 			}
 
 			const provider = getProvider(config);
 			if (!provider) {
 				outro(
-					'Invalid provider configured. Run `aicommits setup` to reconfigure.'
+					'Invalid provider configured. Run `aicn setup` to reconfigure.'
 				);
 				return;
 			}
@@ -46,7 +46,7 @@ export default command(
 				outro(
 					`Configuration issues: ${validation.errors.join(
 						', '
-					)}. Run \`aicommits setup\` to reconfigure.`
+					)}. Run \`aicn setup\` to reconfigure.`
 				);
 				return;
 			}

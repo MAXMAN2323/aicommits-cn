@@ -178,23 +178,22 @@ export async function checkAndAutoUpdate(
 	}
 
 	// Update needed!
-	console.log(`Updating aicommits from v${pkg.version} to v${latestVersion}...`);
-
+	console.log(`Updating ${pkg.name} from v${pkg.version} to v${latestVersion}...`);
 	// Check if global installation
 	const isGlobal = await checkIfGlobalInstallation(pkg.name);
 	if (!isGlobal) {
 		console.log(
-			'Note: aicommits is installed locally. Auto-update skipped for local installations.'
+			`Note: ${pkg.name} is installed locally. Auto-update skipped for local installations.`
 		);
 		return;
 	}
 
 	try {
 		await runBackgroundUpdate(pkg.name, currentDistTag);
-		console.log(`✓ aicommits updated to v${latestVersion}`);
-		console.log('Please restart aic to use the new version.');
+		console.log(`✓ ${pkg.name} updated to v${latestVersion}`);
+		console.log('Please restart aicn to use the new version.');
 	} catch (error) {
 		console.log('Auto-update failed. You can manually update with:');
-		console.log(`  npm install -g aicommits@${currentDistTag}`);
+		console.log(`  npm install -g ${pkg.name}@${currentDistTag}`);
 	}
 }

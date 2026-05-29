@@ -31,7 +31,7 @@ export default () =>
 
 		const headless = isHeadless();
 		if (!headless) {
-			intro(bgCyan(black(' aicommits ')));
+			intro(bgCyan(black(' aicommits-cn ')));
 		}
 
 		const config = await getConfig({});
@@ -39,7 +39,7 @@ export default () =>
 		const providerInstance = getProvider(config);
 		if (!providerInstance) {
 			throw new KnownError(
-				'Invalid provider configuration. Run `aicommits setup` to reconfigure.'
+				'Invalid provider configuration. Run `aicn setup` to reconfigure.'
 			);
 		}
 
@@ -49,7 +49,7 @@ export default () =>
 			throw new KnownError(
 				`Provider configuration issues: ${validation.errors.join(
 					', '
-				)}. Run \`aicommits setup\` to reconfigure.`
+				)}. Run \`aicn setup\` to reconfigure.`
 			);
 		}
 

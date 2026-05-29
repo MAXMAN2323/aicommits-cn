@@ -333,7 +333,7 @@ export const selectModel = async (
 		// Fallback to manual input
 		if (providerDef?.isLocal) {
 			console.log(
-				`No models found on ${providerName || 'local provider'}. Please download a model first, then run \`aicommits model\` to select it.`,
+				`No models found on ${providerName || 'local provider'}. Please download a model first, then run \`aicn model\` to select it.`,
 			);
 			return null;
 		}

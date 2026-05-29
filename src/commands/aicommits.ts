@@ -42,7 +42,7 @@ export default async (
 		const headless = isHeadless();
 		
 		if (!headless) {
-			intro(bgCyan(black(' aicommits ')));
+			intro(bgCyan(black(' aicommits-cn ')));
 		}
 
 		await assertGitRepo();
@@ -83,13 +83,13 @@ export default async (
 		const providerInstance = getProvider(config);
 		if (!providerInstance) {
 			if (!headless) {
-				console.log("Welcome to aicommits! Let's set up your AI provider.");
-				console.log('Run `aicommits setup` to configure your provider.');
-				outro('Setup required. Please run: aicommits setup');
+				console.log("Welcome to aicommits-cn! Let's set up your AI provider.");
+				console.log('Run `aicn setup` to configure your provider.');
+				outro('Setup required. Please run: aicn setup');
 				return;
 			} else {
 				throw new KnownError(
-					'No configuration found. Run `aicommits setup` in an interactive terminal, or set environment variables (OPENAI_API_KEY, etc.)'
+					'No configuration found. Run `aicn setup` in an interactive terminal, or set environment variables (OPENAI_API_KEY, etc.)'
 				);
 			}
 		}
@@ -104,7 +104,7 @@ export default async (
 			throw new KnownError(
 				`Provider configuration issues: ${validation.errors.join(
 					', '
-				)}. Run \`aicommits setup\` to reconfigure.`
+				)}. Run \`aicn setup\` to reconfigure.`
 			);
 		}
 
